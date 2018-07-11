@@ -10,5 +10,8 @@
 [0-9]+ { yylval = atoi(yytext); return NUMBER; }
 \n { return EOL; }
 [ \t] { }
+"(" { return OP; }
+")" { return CP; }
+"//".*  { }
 . { printf("Unknown character %s\n", yytext); }
 %%
