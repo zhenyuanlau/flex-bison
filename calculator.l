@@ -1,14 +1,5 @@
 %{
-  enum yytokentype {
-    NUMBER = 258,
-    ADD = 259,
-    SUB = 260,
-    MUL = 261,
-    DIV = 262,
-    ABS = 263,
-    EOL = 264
-  };
-  int yylval;
+  #include "calculator.tab.h"
 %}
 %%
 "+" { return ADD; }
@@ -21,14 +12,3 @@
 [ \t] { }
 . { printf("Unknown character %s\n", yytext); }
 %%
-int main(int argc, char **argv) {
-  int token;
-  while ((token = yylex())) {
-    printf("%d", token);
-    if(token == NUMBER)
-      printf(" = %d\n", yylval);
-    else
-      printf("\n");
-  }
-  return 0;
-}
